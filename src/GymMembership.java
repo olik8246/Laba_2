@@ -1,13 +1,17 @@
 class GymMembership {
+    private  double discount;
     private String memberName;
     private int membershipType; // 1 Денний абонемент  2 Місячний абонемент  3 Річний абонемент
     private double price;
     private String typeAbonement;
 
+    private int paid;
 
-    public GymMembership(String memberName, int membershipType) {
+
+     GymMembership(String memberName, int membershipType) {
         this.memberName = memberName;
         this.membershipType = membershipType;
+
 
         switch (membershipType) {
             case 1:
@@ -27,26 +31,26 @@ class GymMembership {
         }
     }
 
-    public void calculatePrice(double discount) {
-        price = (price/100)*(100-discount);
+    void calculatePrice(double discount) {
+        price = (price/100)*(100- discount);
         System.out.println("Клієнт " + memberName + " отримав знижку " + discount + "%.");
         System.out.println("Загальна ціна "+ typeAbonement +" абонементу: ₴ " + price);
     }
 
                                                       // Виклик методу, що викликає метод із іншого класу
-    public void purchaseServices(GymServices services) {
+     void purchaseServices(GymServices services) {
         services.showServices();
         System.out.println("Клієнт " + memberName + " купив додаткові послуги.");
     }
-    public String getMemberName() {
+    String getMemberName() {
         return memberName;
     }
 
-    public void setMemberName(String memberName) {
+    void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 
-    public int getMembershipType() {
+    int getMembershipType() {
         return membershipType;
     }
 
@@ -59,7 +63,7 @@ class GymMembership {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.price = price*2;
     }
 
     public String getTypeAbonement() {
@@ -70,5 +74,20 @@ class GymMembership {
         this.typeAbonement = typeAbonement;
     }
 
+    public int getPaid() {
+        return paid;
+    }
+
+    public void setPaid(int paid) {
+        this.paid = paid;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
 }
 
